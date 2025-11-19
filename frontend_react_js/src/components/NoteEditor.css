@@ -1,0 +1,100 @@
+.noteeditor-modal {
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  z-index: 200;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(35, 54, 89, 0.18);
+}
+
+.noteeditor-modal.open {
+  display: flex;
+  animation: modalFadeIn 0.22s;
+}
+
+.noteeditor-sheet {
+  background: linear-gradient(117deg,#fff 70%,#eef6fb 130%);
+  max-width: 430px;
+  width: 97vw;
+  border-radius: 18px;
+  box-shadow: 0 2px 22px #2563EB14;
+  padding: 2.1rem 2.1rem 1.38rem 2.1rem;
+  position: relative;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.noteeditor-sheet h2 {
+  margin: 0 0 0.41em 0;
+  color: #2563EB;
+  font-weight: 700;
+  font-size: 1.28rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.27rem;
+  margin-bottom: 0.37rem;
+}
+
+label {
+  color: #5f728d;
+  font-weight: 500;
+  font-size: 0.97rem;
+  margin-bottom: 0.12em;
+}
+
+input[type="text"],
+textarea {
+  border: 1.4px solid #cbe1fa;
+  background: #f9fafb;
+  border-radius: 6px;
+  padding: 0.45rem 0.93rem;
+  font-size: 1.04rem;
+  color: #111827;
+  font-family: inherit;
+  font-smooth: always;
+  margin-bottom: 0.18em;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #2563EB;
+  outline: none;
+}
+
+.form-error {
+  background: #ef4444;
+  color: #fff;
+  padding: 0.42em 1em;
+  margin-bottom: 0.41em;
+  border-radius: 7px;
+  font-size: 1rem;
+}
+
+.noteeditor-actions {
+  display: flex;
+  gap: 1.05em;
+  margin-top: 0.13em;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .noteeditor-sheet { padding: 1.2rem 0.47rem 0.95rem 0.47rem; }
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

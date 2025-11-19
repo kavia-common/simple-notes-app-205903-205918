@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #2563EB 0%, #f9fafb 100%);
+  padding: 0.5rem 2rem;
+  box-shadow: 0 2px 8px 0 rgba(37, 99, 235, 0.08);
+  min-height: 56px;
+}
+
+.header-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #2563EB;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 0 #e6f0fa18;
+}
+
+.header-logo {
+  border-radius: 8px;
+  background: #f9fafb;
+  box-shadow: 0 1px 4px #2563EB30;
+}
+
+.header-right {
+  font-size: 1.07rem;
+  color: #6B7A90;
+  font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 0.5rem 0.9rem;
+    min-height: 44px;
+  }
+  .header-title { font-size: 1rem; }
+  .header-right { font-size: 0.95rem; }
+}

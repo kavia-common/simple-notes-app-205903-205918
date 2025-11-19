@@ -1,13 +1,20 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
+  /* Ocean Professional Theme Colors */
+  --ocean-primary: #2563EB;
+  --ocean-secondary: #F59E0B;
+  --ocean-error: #EF4444;
+  --ocean-bg: #f9fafb;
+  --ocean-surface: #ffffff;
+  --ocean-text: #111827;
+  --ocean-gradient: linear-gradient(95deg,#2563EB14 0,#f9fafb 90%);
+  --bg-primary: var(--ocean-bg);
   --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
+  --text-primary: var(--ocean-text);
+  --text-secondary: #6B7A90;
   --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --button-bg: var(--ocean-primary);
+  --button-text: #fff;
 }
 
 [data-theme="dark"] {

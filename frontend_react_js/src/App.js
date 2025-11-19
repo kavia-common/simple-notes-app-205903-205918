@@ -1,48 +1,73 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { NotesProvider, useNotes } from "./NotesContext";
+import Header from "./components/Header";
+import NotesList from "./components/NotesList";
+import NoteEditor from "./components/NoteEditor";
+import "./App.css";
 
-// PUBLIC_INTERFACE
-function App() {
-  const [theme, setTheme] = useState('light');
+/**
+ * PUBLIC_INTERFACE
+ * Main App entrypoint for Ocean Notes.
+ */
+function OceanNotesApp() {
+  const { notes, getNote, addNote, updateNote } = useNotes();
+  const [editorState, setEditorState] = useState({ open: false, mode: "new", noteId: null });
 
-  // Effect to apply theme to document element
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  // PUBLIC_INTERFACE
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
+  // Open modal to create a note
+  function handleNewNote() {
+    setEditorState({ open: true, mode: "new", noteId: null });
+  }
+  // Open modal to edit a note
+  function handleEditNote(noteId) {
+    setEditorState({ open: true, mode: "edit", noteId });
+  }
+  // Close modal
+  function handleCloseEditor() {
+    setEditorState({ ...editorState, open: false });
+  }
+  // Save from modal
+  function handleSaveNote(noteData) {
+    if (editorState.mode === "edit" && noteData.id) {
+      updateNote(noteData.id, noteData);
+    } else {
+      addNote(noteData);
+    }
+    setEditorState({ ...editorState, open: false });
+  }
+  // The editor gets the full note object if editing, else null for new
+  const editingNote = editorState.mode === "edit" ? getNote(editorState.noteId) : null;
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App ocean-theme-bg">
+      <Header />
+      <main>
+        <NotesList onEdit={handleEditNote} onNew={handleNewNote} />
+        <NoteEditor
+          open={editorState.open}
+          mode={editorState.mode}
+          note={editingNote}
+          onSave={handleSaveNote}
+          onClose={handleCloseEditor}
+        />
+      </main>
+      <footer style={{ color: "#8ca3d9", textAlign: "center", marginTop: "3rem", fontSize: "1rem", background: "none" }}>
+        <span>
+          Ocean Notes • Local demo • {notes.length} {notes.length === 1 ? "note" : "notes"}
+        </span>
+      </footer>
     </div>
+  );
+}
+
+/**
+ * Top-level wrapper for context provider.
+ */
+// PUBLIC_INTERFACE
+function App() {
+  return (
+    <NotesProvider>
+      <OceanNotesApp />
+    </NotesProvider>
   );
 }
 

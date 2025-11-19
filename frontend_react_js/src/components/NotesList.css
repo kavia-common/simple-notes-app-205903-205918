@@ -1,0 +1,149 @@
+.noteslist-wrapper {
+  margin: 0 auto;
+  max-width: 520px;
+  background: var(--surface, #fff);
+  border-radius: 18px;
+  box-shadow: 0 2px 24px 0 rgba(37,99,235,0.09), 0 1.5px 0 #eaf2f9;
+  padding: 2rem 1.35rem 2.9rem 1.35rem;
+  margin-top: 2.2rem;
+  min-height: 480px;
+}
+
+.noteslist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  gap: 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #2563EB 60%, #F59E0B 100%);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.33rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  border-radius: 9px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px #2563EB12;
+  transition: background 0.17s, transform 0.11s;
+}
+.btn-primary:hover { background: linear-gradient(90deg,#2563EB 80%,#F59E0B 120%); transform: translateY(-2px) scale(1.025); }
+
+.search-box {
+  background: #f9fafb;
+  border: 1.5px solid #e3eaf6;
+  border-radius: 7px;
+  padding: 0.44rem 0.9rem;
+  min-width: 142px;
+  font-size: 1rem;
+}
+
+.noteslist-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.noteslist-item {
+  background: linear-gradient(95deg,#eeeafc 0,#fff 60%);
+  border-radius: 13px;
+  padding: 1.02rem 1.1rem 0.98rem 1.1rem;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 2px 15px 0 rgba(94,189,255,0.06), 0 0.5px 0 #eaf7fa;
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.14s, transform 0.11s;
+  position: relative;
+}
+.noteslist-item:focus-within { outline: 2px solid #2563EB90; }
+
+.item-main {
+  all: unset;
+  cursor: pointer;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.19rem;
+}
+
+.item-title {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #2563EB;
+}
+
+.item-snippet {
+  color: #6B7A90;
+  font-size: 0.97rem;
+  margin-top: 0.2em;
+  line-height: 1.2;
+}
+
+.item-meta {
+  font-size: 0.81rem;
+  color: #94aad0;
+  margin-left: 1.2rem;
+}
+
+.item-delete {
+  background: none;
+  border: none;
+  color: #ef4444;
+  margin-left: 0.7rem;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: color 0.16s, transform 0.09s;
+  outline: none !important;
+}
+.item-delete:focus, .item-delete:hover { color: #c81d28; }
+
+.item-delete-modal {
+  position: absolute;
+  right: 0.3rem; top: 98%; z-index: 10;
+  background: #fff;
+  border: 1.5px solid #ef4444;
+  border-radius: 9px;
+  box-shadow: 0 8px 28px #ef444417;
+  padding: 0.95rem 1.15rem;
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 2px;
+  align-items: center;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: 500;
+  padding: 0.31rem 1.15rem;
+  margin-left: 0.75em;
+  cursor: pointer;
+}
+
+.btn {
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  color: #2563EB;
+  border-radius: 7px;
+  font-weight: 500;
+  padding: 0.31rem 1.08rem;
+  cursor: pointer;
+  transition: border-color 0.11s;
+}
+.btn:hover { border-color: #2563EB99; }
+
+.noteslist-empty {
+  color: #cccccc;
+  text-align: center;
+  padding: 2.1rem 0 1.9rem 0;
+}
+
+@media (max-width: 700px) {
+  .noteslist-wrapper { max-width: 99vw; margin-top: 1rem; padding: 1.1rem 0.2rem 2.1rem 0.2rem; }
+  .item-title { font-size: 1rem; }
+  .noteslist-item { padding: 0.7rem 0.41rem 0.66rem 0.41rem; }
+}
