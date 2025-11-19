@@ -1,0 +1,45 @@
+.reminders-page {
+  max-width: 500px;
+  margin: 2.5rem auto;
+  background: var(--ocean-surface, #fff);
+  border-radius: 18px;
+  box-shadow: 0 2px 22px #2563EB13;
+  padding: 1.7rem 1.5rem 1.7rem 1.5rem;
+  min-height: 390px;
+}
+.reminders-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.1rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+.reminders-filters {
+  display: flex;
+  gap: 0.25em;
+  align-items: center;
+  margin-top: 2px;
+}
+.reminders-filters button {
+  background: #f9fafb;
+  color: #2563EB;
+  border: 2px solid #e3eafe;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.28em 0.93em;
+  margin: 0 0.11em;
+  cursor: pointer;
+  font-size: 0.99rem;
+  transition: border .14s, color .14s;
+}
+.reminders-filters button.active,
+.reminders-filters button:hover {
+  background: var(--ocean-primary);
+  color: #fff;
+  border-color: #2563EB;
+}
+
+@media (max-width: 540px) {
+  .reminders-page { max-width: 99vw; padding: 1rem 0.12rem 1rem 0.12rem; }
+}

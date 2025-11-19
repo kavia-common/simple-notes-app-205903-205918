@@ -1,9 +1,10 @@
 import React from "react";
 import "./Header.css";
+import { NavLink } from "react-router-dom";
 
 /**
  * PUBLIC_INTERFACE
- * Header - Main application header bar.
+ * Header - Main application header bar with navigation.
  */
 function Header() {
   return (
@@ -15,9 +16,14 @@ function Header() {
           <rect x="12" y="14" width="8" height="2" fill="#FFF"/>
           <rect x="12" y="17" width="8" height="2" fill="#FFF" opacity="0.65"/>
         </svg>
-        <span>Ocean Notes</span>
+        <span>Simple Notes</span>
       </div>
-      <span className="header-right">Your simple, secure notes</span>
+      <nav className="header-nav" aria-label="Page navigation">
+        <NavLink to="/notes" className={({isActive}) => isActive ? "header-nav-link active" : "header-nav-link"}>Notes</NavLink>
+        <NavLink to="/calendar" className={({isActive}) => isActive ? "header-nav-link active" : "header-nav-link"}>Calendar</NavLink>
+        <NavLink to="/reminders" className={({isActive}) => isActive ? "header-nav-link active" : "header-nav-link"}>Reminders</NavLink>
+        <NavLink to="/calculator" className={({isActive}) => isActive ? "header-nav-link active" : "header-nav-link"}>Calculator</NavLink>
+      </nav>
     </header>
   );
 }
